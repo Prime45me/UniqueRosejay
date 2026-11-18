@@ -1,9 +1,9 @@
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Fashion', href: '/fashion' },
+  { label: 'Store', href: '/store' },
   { label: 'Hotels', href: '/hotels' },
   { label: 'Apartments', href: '/apartments' },
-  { label: 'Admin', href: '/admin' }
+  { label: 'Administration', href: '/admin' }
 ];
 
 export function SiteHeader() {
@@ -11,7 +11,7 @@ export function SiteHeader() {
     <header className="border-b border-slate-200 bg-white/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="/" className="text-2xl font-bold tracking-tight text-slate-900">
-          UniqueRosejay
+          URJ
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (

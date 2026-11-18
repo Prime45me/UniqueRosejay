@@ -1,21 +1,32 @@
 # Project Overview
 
-UniqueRosejay is an integrated platform for fashion retail, hotel discovery and apartment reservations. The MVP is designed as a modular monolith so each business area can operate independently while sharing customers, navigation and admin workflows.
+Unique RoseJay Enterprises (URJ) operates one main website with distinct Store, Hotels and Apartments experiences and centralized administration. These sections share common platform services while remaining independently organized business areas.
 
-## Business focus
+## Confirmed client direction
 
-- Fashion storefront with product browsing, cart and order management
-- Hotel booking request flow with reservation references and statuses
-- Apartment inquiry and reservation request flow
-- Unified admin dashboard for all business units
+- Business name: Unique RoseJay Enterprises (URJ)
+- One main website with separate business sections
+- Centralized administration: administrators manage the platform and business areas
+- International operation is intended
+- The retail scope is a broad Store / E-commerce module, not only fashion
 
-## MVP assumptions
+## Business areas
 
-- The platform is brand-led and not a marketplace
-- Fashion, hotels and apartments are treated as separate but connected modules
-- Inventory, availability and payment rules are intentionally simulated or placeholder-driven until approved by the client
-- Any reservation is treated as a request unless confirmed by business rules later
+- **Store:** clothing, dresses, bags, shoes, wigs, ice chests, refrigerators, washing machines and additional categories as the catalog grows
+- **Hotels:** property discovery and reservation requests
+- **Apartments:** property discovery and reservation requests
+- **Administration:** one centralized area for managing the business
+
+The Store catalog must use extensible categories rather than a fixed list of product types. Hotels and apartments remain separate customer experiences while sharing appropriate platform infrastructure.
+
+## MVP boundaries
+
+- The platform is brand-led, not a multi-vendor marketplace.
+- International readiness must not assume one country, currency, address format, shipping method or payment provider.
+- International payment processing is not part of this phase.
+- Property availability is not checked against reliable live inventory; submitted accommodation requests must not be described as confirmed bookings.
+- Demonstration content is not actual client inventory, rates or operational policy.
 
 ## Deliverable goal
 
-The first milestone establishes a working project foundation, a common design language, and the baseline architecture needed for later feature phases.
+Build a maintainable platform foundation that supports international growth while keeping unresolved commercial and operating rules configurable and explicit.
