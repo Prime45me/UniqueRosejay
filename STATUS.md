@@ -1,7 +1,7 @@
 # Project Status
 
 **Project:** Unique RoseJay Enterprises (URJ)  
-**Current phase:** Phase 1 — foundation review  
+**Current phase:** Phase 1 — closeout review  
 **Next phase:** Phase 2 — shared website shell and homepage, pending approval
 
 ## Client-confirmed direction
@@ -18,13 +18,17 @@
 - Initial homepage/header scaffold
 - Project documentation updated with questionnaire responses and unresolved decisions
 - International architecture considerations documented
+- Homepage and shared navigation updated for URJ's Store / Hotels / Apartments structure
+- Next.js upgraded to `15.5.28`; Zod upgraded to `4.6.7`
+- Frontend TypeScript configuration updated for ES2017 and Next.js development-generated types
 
-## Pending review
+## Phase 1 closeout verification
 
-- Dependency audit and safe remediation
-- Separate TypeScript checks for frontend and backend
-- Production builds for frontend and backend
-- Runtime smoke tests for frontend and API
+- Backend TypeScript check and production build: passed on the prior dependency state; rerun required after final configuration/dependency changes
+- Frontend TypeScript check and production build: passed before the latest `tsconfig.json` edit; rerun required
+- Runtime API and homepage smoke tests: previously returned HTTP 200; rerun required after homepage/navigation updates
+- Dependency audit: critical findings were addressed, but residual vulnerable development dependency paths remain under investigation; final audit and remediation status required
+- Navigation and responsive layout checks: pending
 
 ## Not started
 
@@ -36,4 +40,4 @@
 
 ## Approval gate
 
-Do not begin Phase 2 until the user reviews and approves the proposed scope.
+Phase 1 is not approved for closure yet. Do not begin Phase 2 until the outstanding audit and final verification are recorded and the user approves.

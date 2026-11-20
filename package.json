@@ -5,6 +5,9 @@
   "workspaces": [
     "apps/*"
   ],
+  "overrides": {
+    "postcss": "8.5.33"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev --workspace apps/server\" \"npm run dev --workspace apps/web\"",
     "dev:web": "npm run dev --workspace apps/web",

@@ -27,7 +27,14 @@ The project is configured around PostgreSQL and a modular schema that supports t
 - Add indexes for listing, filtering and status queries
 - Keep reservation and payment data separate from customer identity data
 - Plan for availability validation, double-booking prevention and inventory checks
+- Represent monetary values with PostgreSQL `NUMERIC` and store an explicit ISO 4217 currency code alongside each amount; do not use floating-point values or infer a currency from a symbol, locale or deployment location
+- Preserve currency precision and record the currency used for each order, property rate and payment; currency conversion and settlement rules remain undecided
+- Store country identifiers with standard country codes, while keeping country-specific validation configurable
+- Model addresses with extensible structured fields for address lines, locality, administrative area, postal code and country; do not require one country's address shape globally
+- Keep shipping destinations, serviceability and methods in configurable data rather than hardcoding one country, carrier, zone or delivery option
+- Keep payment-provider details separate from order data behind a future integration boundary; no provider, method, settlement currency or international payment flow is selected or implemented
+- Do not encode unresolved tax, customs, foreign-exchange, shipping coverage or local regulatory rules into the schema as if approved
 
 ## Future work
 
-The schema is intentionally designed for expansion into real inventory, reservation status workflows and payment processing without forcing a rebuild.
+The schema is intentionally designed for expansion into international catalog and order workflows, real inventory, reservation status workflows and payment processing without forcing a rebuild. No production schema or migrations have been implemented yet.
