@@ -24,11 +24,14 @@
 
 ## Phase 1 closeout verification
 
-- Backend TypeScript check and production build: passed on the prior dependency state; rerun required after final configuration/dependency changes
-- Frontend TypeScript check and production build: passed before the latest `tsconfig.json` edit; rerun required
-- Runtime API and homepage smoke tests: previously returned HTTP 200; rerun required after homepage/navigation updates
-- Dependency audit: critical findings were addressed, but residual vulnerable development dependency paths remain under investigation; final audit and remediation status required
-- Navigation and responsive layout checks: pending
+- Backend TypeScript check: passed after final configuration and dependency changes
+- Frontend TypeScript check: passed after final `tsconfig.json` and dependency changes
+- Backend production build: passed after final dependency changes
+- Frontend production build: passed on Next.js `15.5.29`
+- Dependency audit: 0 vulnerabilities (full tree and `--omit=dev`) after the scoped PostCSS override; Next.js 15.5.29 now resolves PostCSS `8.5.33`. `npm ls postcss` still reports a known override-validity error. See `docs/SECURITY_AUDIT.md`.
+- API and homepage HTTP smoke tests were not rerun at the user's direction; earlier smoke checks had returned HTTP 200 before the recent changes.
+- Static navigation review: links point to Store, Hotels, Apartments, Administration, Account and Cart, but only the homepage route exists; section/account/cart routes are not implemented.
+- Responsive source review: homepage uses responsive grid breakpoints, but the header hides its desktop nav below `md` without a mobile menu. No visual viewport/browser check was run.
 
 ## Not started
 
@@ -40,4 +43,4 @@
 
 ## Approval gate
 
-Phase 1 is not approved for closure yet. Do not begin Phase 2 until the outstanding audit and final verification are recorded and the user approves.
+Phase 1 is not approved for closure yet. The PostCSS remediation is applied but awaits user review before commit, and runtime/browser checks were skipped as requested. Do not begin Phase 2 until the user reviews and approves the closeout report.

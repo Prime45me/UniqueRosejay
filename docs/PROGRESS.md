@@ -15,10 +15,13 @@
 
 ## Validation
 
-- Backend TypeScript check and production build must be recorded separately in this review.
-- Frontend TypeScript check and production build must be recorded separately in this review.
-- API and frontend runtime smoke checks are to be repeated as part of this review.
-- The dependency audit is being investigated; findings and remaining risk must be reported before Phase 2.
+- Backend TypeScript check: passed after the final dependency update.
+- Frontend TypeScript check: passed with the updated Next.js TypeScript configuration.
+- Backend and frontend production builds: passed; the frontend build uses Next.js 15.5.29.
+- npm audit: 0 vulnerabilities (full tree and production-only) after the scoped PostCSS `8.5.33` override for Next.js 15.5.29. See `SECURITY_AUDIT.md`.
+- The override needed a single-entry lockfile correction because npm kept the stale nested PostCSS `8.4.31` entry; `npm ls postcss` still reports a known override-validity error.
+- HTTP smoke tests were not run at the user's direction.
+- Static navigation review found routes linked from the header are not implemented yet; responsive source review found no mobile navigation menu. No browser/viewport test was run.
 
 ## Not yet implemented
 
@@ -31,4 +34,4 @@
 
 ## Next step
 
-Present updated Phase 1 findings and a Phase 2 proposal. Do not begin Phase 2 until the user approves it.
+Review and commit the PostCSS remediation, review skipped runtime/browser checks, and obtain user approval before Phase 2. Do not begin Phase 2 until approval.

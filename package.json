@@ -6,7 +6,9 @@
     "apps/*"
   ],
   "overrides": {
-    "postcss": "8.5.33"
+    "next@15.5.29": {
+      "postcss": "8.5.33"
+    }
   },
   "scripts": {
     "dev": "concurrently \"npm run dev --workspace apps/server\" \"npm run dev --workspace apps/web\"",

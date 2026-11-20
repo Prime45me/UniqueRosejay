@@ -1,28 +1,58 @@
 import type { Config } from 'tailwindcss';
 
+/**
+ * URJ design tokens — "Architectural Linen & Obsidian".
+ * Source: Google AI Studio design handoff (DESIGN_HANDOFF.md §3–4).
+ * Colour roles follow a 60 / 30 / 10 split: canvas, surface, bronze accent.
+ */
 const config: Config = {
-  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts,jsx,tsx}'
+  ],
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#fdf2f8',
-          100: '#fce7f3',
-          200: '#fbcfe8',
-          300: '#f9a8d4',
-          400: '#f472b6',
-          500: '#ec4899',
-          600: '#db2777',
-          700: '#be185d',
-          800: '#9d174d',
-          900: '#831843'
+        canvas: '#FAFAF8',
+        surface: {
+          DEFAULT: '#F2F1ED',
+          elevated: '#FFFFFF'
         },
-        slate: {
-          950: '#020617'
+        hairline: '#E4E2DC',
+        ink: {
+          DEFAULT: '#141413',
+          hover: '#2E2D2A',
+          muted: '#5C5A54',
+          subtle: '#78756E'
+        },
+        accent: {
+          DEFAULT: '#8C6239',
+          hover: '#734F2D',
+          light: '#E5C9A6'
+        },
+        status: {
+          positive: '#15803D',
+          pending: '#92400E',
+          negative: '#B91C1C'
         }
       },
-      boxShadow: {
-        soft: '0 18px 45px rgba(15, 23, 42, 0.10)'
+      fontFamily: {
+        display: ['var(--font-display)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace']
+      },
+      fontSize: {
+        kicker: ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.08em' }],
+        caption: ['0.6875rem', { lineHeight: '1rem' }]
+      },
+      maxWidth: {
+        site: '80rem'
+      },
+      aspectRatio: {
+        portrait: '3 / 4',
+        landscape: '4 / 3',
+        wide: '16 / 9'
       }
     }
   },
