@@ -41,6 +41,10 @@
 - Database migrations
 - Payment processing, shipping, tax or foreign exchange
 
+## Phase 2
+
+Design integration is implemented; see `docs/INTEGRATION_PROGRESS.md`. The navigation and mobile-menu findings above are resolved for all linked routes. Backend and database were not changed.
+
 ## Approval gate
 
-Phase 1 is not approved for closure yet. The PostCSS remediation is applied but awaits user review before commit, and runtime/browser checks were skipped as requested. Do not begin Phase 2 until the user reviews and approves the closeout report.
+Phase 2 awaits user review. Do not begin Phase 3 until approved.

@@ -4,10 +4,10 @@ import { DemoLabel, Ledger } from '@/components/ui/Notice';
 import { TO_BE_CONFIRMED } from '@/lib/site';
 import type { DemoApartment } from '@/lib/types';
 
-/** Three-cell spatial metrics grid (layout · floor area · utilities) — the apartments signature element. */
+/** Three-cell spatial metrics grid (bed and bath · floor area · utilities) — the apartments signature element. */
 export function SpatialMetrics({ apartment }: { apartment: DemoApartment }) {
   const cells = [
-    { value: `${apartment.bedrooms} bed / ${apartment.bathrooms} bath`, label: 'Layout', mono: true },
+    { value: `${apartment.bedrooms} / ${apartment.bathrooms}`, label: 'Bed / bath', mono: true },
     { value: `${apartment.areaSqm} m²`, label: 'Floor area', mono: true },
     { value: apartment.utilitiesIncluded ? 'Included' : 'Separate', label: 'Utilities', mono: false }
   ];
@@ -17,7 +17,7 @@ export function SpatialMetrics({ apartment }: { apartment: DemoApartment }) {
       {cells.map((cell) => (
         <div key={cell.label} className="flex flex-col-reverse px-2 py-2.5">
           <dt className="text-caption text-ink-subtle">{cell.label}</dt>
-          <dd className={`text-xs font-semibold text-ink ${cell.mono ? 'font-mono tabular-nums' : ''}`}>{cell.value}</dd>
+          <dd className={`text-xs font-medium text-ink ${cell.mono ? 'font-mono tabular-nums' : ''}`}>{cell.value}</dd>
         </div>
       ))}
     </dl>

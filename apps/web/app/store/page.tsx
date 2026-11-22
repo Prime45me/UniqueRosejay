@@ -104,7 +104,7 @@ export default async function StorePage({ searchParams }: StorePageProps) {
             </section>
           ))}
 
-          <section aria-labelledby="future-categories" className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:gap-8">
+          <section aria-labelledby="future-categories">
             <h2 id="future-categories" className="sr-only">
               Future categories
             </h2>

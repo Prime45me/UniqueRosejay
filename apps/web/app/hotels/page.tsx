@@ -33,7 +33,7 @@ export default async function HotelsPage() {
           priority
           imageClassName="opacity-90"
         >
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-6 text-canvas sm:p-10">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 pt-24 text-canvas sm:p-10 sm:pt-28">
             <Kicker tone="light">URJ Hotels</Kicker>
             <h1 className="mt-2 max-w-3xl text-4xl font-semibold sm:text-5xl">Quiet Architecture &amp; Tailored Stays</h1>
             <p className="mt-3 max-w-xl text-sm text-white/85">

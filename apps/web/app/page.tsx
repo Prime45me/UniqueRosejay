@@ -172,7 +172,7 @@ export default async function HomePage() {
                 sizes="(min-width: 1024px) 600px, 100vw"
                 imageClassName="transition-transform duration-500 group-hover:scale-[1.02]"
               >
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent p-6 text-canvas sm:p-8">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/65 to-transparent p-6 pt-24 text-canvas sm:p-8 sm:pt-28">
                   <Kicker tone="light">{dress.editorialNote}</Kicker>
                   <h3 className="mt-1.5 font-display text-2xl font-semibold leading-tight sm:text-3xl">{dress.name}</h3>
                   <div className="mt-3 flex flex-wrap items-center justify-between gap-4">
@@ -265,7 +265,7 @@ export default async function HomePage() {
           {hotel ? (
             <article className="flex flex-col overflow-hidden rounded-sm border border-hairline bg-surface-elevated">
               <Media image={hotel.images[0]} frameClassName="aspect-wide" sizes="(min-width: 1024px) 600px, 100vw">
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-5 text-canvas">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/65 to-transparent p-5 pt-20 text-canvas">
                   <Kicker tone="light">Hotels · Demonstration listing</Kicker>
                   <h3 className="mt-1 font-display text-2xl font-semibold sm:text-3xl">{hotel.name}</h3>
                 </div>
@@ -290,7 +290,7 @@ export default async function HomePage() {
           {apartment ? (
             <article className="flex flex-col overflow-hidden rounded-sm border border-hairline bg-surface-elevated">
               <Media image={apartment.images[0]} frameClassName="aspect-wide" sizes="(min-width: 1024px) 600px, 100vw">
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-5 text-canvas">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/65 to-transparent p-5 pt-20 text-canvas">
                   <Kicker tone="light">Apartments · Demonstration listing</Kicker>
                   <h3 className="mt-1 font-display text-2xl font-semibold sm:text-3xl">{apartment.name}</h3>
                 </div>

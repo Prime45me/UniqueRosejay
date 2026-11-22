@@ -27,7 +27,7 @@ Next.js 15.5.29 declares an exact dependency on `postcss@8.4.31`, which is affec
 
 ### Why an override rather than a Next.js upgrade
 
-- 15.5.29 is the final 15.x backport release, and every 15.x release pins `postcss@8.4.31`.
+- 15.5.29 was the newest 15.x release when checked, and every stable 15.x release (83 checked) pins `postcss@8.4.31`.
 - npm's only automated fix is Next.js 16.4.6, a major upgrade, which was out of scope and was not applied.
 - `npm audit fix --force` was not used.
 
@@ -85,7 +85,7 @@ These checks were run on a clean copy using the corrected lockfile and the scope
 
 ## Remaining limitations
 
-- **`npm ls postcss` reports `invalid`.** It flags `postcss@8.5.33` as invalid against Next's declared `8.4.31` and exits non-zero (`ELSPROBLEMS`). The same result occurs with every override form tested: version-scoped, unscoped `next`, global `postcss`, and `$postcss` reference. This is an npm reporting limitation for an overridden package that is hoisted and shared with packages that are not overridden. It does not affect installation: `npm install`, `npm ci` and `npm audit` all honour the override. Any CI step that runs `npm ls` without a package filter would fail on this.
+- **`npm ls postcss` reports `invalid`.** It flags `postcss@8.5.33` as invalid against Next's declared `8.4.31` and exits non-zero (`ELSPROBLEMS`). The same result occurs with every override form tested: version-scoped, unscoped `next`, global `postcss`, and `$postcss` reference. The cause has not been established. Installation is unaffected in testing: `npm ci` installs only 8.5.33, a repeat `npm install` leaves the lockfile unchanged, and `npm audit` is clean. Any CI step that runs `npm ls` without a package filter would fail on this.
 - **The override is tied to `next@15.5.29`.** It stops applying if Next.js is changed. Upgrading to a release that ships patched PostCSS (16.x) makes it unnecessary. Any other 15.x change requires re-checking the nested PostCSS version.
 - **Next.js has not been tested against PostCSS 8.5.33 by its maintainers.** Compatibility rests on the API review and the successful builds above.
 - **Dev-mode CSS was not compiled.** `next dev` compiles CSS only when a page is first requested. HTTP and browser smoke tests were excluded at the user's direction, so this verification shows the dev server starts cleanly, while CSS processing was verified through the production build. No visual or browser check was run.

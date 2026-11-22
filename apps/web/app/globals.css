@@ -22,8 +22,7 @@
   }
 
   h1,
-  h2,
-  .font-display {
+  h2 {
     @apply font-display;
     text-wrap: balance;
   }

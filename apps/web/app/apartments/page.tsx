@@ -45,7 +45,7 @@ export default async function ApartmentsPage({ searchParams }: ApartmentsPagePro
           <h1 className="mt-2 text-4xl font-semibold text-ink sm:text-5xl">Residences, Clearly Described</h1>
           <p className="mt-3 text-sm leading-relaxed text-ink-muted">
             Compare layouts, floor area, furnishing and utilities at a glance. Rental terms are set out in a simple
-            ledger so nothing is hidden.
+            ledger.
           </p>
           <div className="mt-5">
             <DemoLabel>Demonstration image and listings</DemoLabel>
