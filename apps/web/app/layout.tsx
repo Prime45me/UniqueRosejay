@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, IBM_Plex_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
+import { CartDrawer } from '@/components/store/cart/CartDrawer';
+import { CartProvider } from '@/components/store/cart/CartProvider';
 import { SITE } from '@/lib/site';
 
 /* Typography (design handoff §4, "2 + 1 rule"): display serif, UI sans, data mono. Self-hosted by next/font. */
@@ -49,11 +51,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body className="flex min-h-screen flex-col">
-        <SiteHeader />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <CartProvider>
+          <SiteHeader />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );

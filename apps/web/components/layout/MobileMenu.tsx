@@ -11,7 +11,7 @@ import type { NavItem } from '@/lib/site';
  * Mobile navigation (below md): a disclosure button that reveals a full-width panel under the
  * header. Closes on route change and on Escape (returning focus to the toggle).
  */
-export function MobileMenu({ items, secondary }: { items: NavItem[]; secondary: NavItem[] }) {
+export function MobileMenu({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const panelId = useId();
@@ -65,19 +65,6 @@ export function MobileMenu({ items, secondary }: { items: NavItem[]; secondary: 
               </Link>
             </li>
             {items.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  aria-current={isActivePath(pathname, item.href) ? 'page' : undefined}
-                  className={linkClass(item.href)}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ul className="mt-2 space-y-1 border-t border-hairline pt-2">
-            {secondary.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

@@ -29,16 +29,15 @@ export interface NavItem {
   href: string;
 }
 
-/** Primary navigation — the five single-line links of the design's three-zone header. */
+/** Primary navigation — the five single-line links of the design's three-zone header (Bag is the action). */
 export const PRIMARY_NAV: NavItem[] = [
   { label: 'Store', href: '/store' },
   { label: 'Hotels', href: '/hotels' },
   { label: 'Apartments', href: '/apartments' },
-  { label: 'About', href: '/about' }
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' }
 ];
 
-/** The header's single primary action. */
-export const PRIMARY_ACTION: NavItem = { label: 'Contact', href: '/contact' };
 
 export const DEMO_NOTICE =
   'Design preview: products, properties and photographs are demonstration content, not actual URJ inventory.';

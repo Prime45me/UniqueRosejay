@@ -6,8 +6,13 @@ import rateLimit from 'express-rate-limit';
 import { env } from './config/env.js';
 import { errorHandler, notFoundHandler } from './lib/http.js';
 import { healthRouter } from './routes/health.js';
+import { storeRouter } from './store/routes.js';
 
 const app = express();
+
+// The Next.js server proxies browser requests and forwards the visitor's address in
+// X-Forwarded-For. Trust that header only from a loopback proxy, so rate limits apply per visitor.
+app.set('trust proxy', 'loopback');
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -29,8 +34,10 @@ app.use(
   })
 );
 app.use(express.json({ limit: '1mb' }));
-app.use('/api', apiLimiter);
+// The Store has its own per-route limits (browse / cart / order); everything else keeps the default.
+app.use('/api', (req, res, next) => (req.path.startsWith('/store/') ? next() : apiLimiter(req, res, next)));
 app.use('/api', healthRouter);
+app.use('/api/store', storeRouter);
 
 app.get('/', (_req, res) => {
   res.json({

@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import { MobileMenu } from '@/components/layout/MobileMenu';
 import { PrimaryNav } from '@/components/layout/PrimaryNav';
-import { buttonClasses } from '@/components/ui/Button';
-import { DEMO_NOTICE, PRIMARY_ACTION, PRIMARY_NAV, SITE } from '@/lib/site';
+import { BagButton } from '@/components/store/cart/BagButton';
+import { DEMO_NOTICE, PRIMARY_NAV, SITE } from '@/lib/site';
 
 /**
- * Strict three-zone header from the design: wordmark — single-line navigation — one primary action.
- * The prototype's "Bag (N)" action is replaced by Contact because cart functionality is out of
- * scope for Phase 2.
+ * Strict three-zone header from the design: wordmark — single-line navigation — one primary action
+ * ("Bag (N)", which opens the cart drawer).
  */
 export function SiteHeader() {
   return (
@@ -34,10 +33,8 @@ export function SiteHeader() {
           <PrimaryNav items={PRIMARY_NAV} />
 
           <div className="flex shrink-0 items-center gap-3">
-            <Link href={PRIMARY_ACTION.href} className={buttonClasses('primary', 'hidden min-h-[40px] px-5 sm:inline-flex')}>
-              {PRIMARY_ACTION.label}
-            </Link>
-            <MobileMenu items={PRIMARY_NAV} secondary={[PRIMARY_ACTION]} />
+            <BagButton />
+            <MobileMenu items={PRIMARY_NAV} />
           </div>
         </div>
       </header>

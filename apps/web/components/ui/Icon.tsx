@@ -63,6 +63,21 @@ const PATHS = {
       <path d="M12 7v5l3.25 2" />
     </>
   ),
+  plus: <path d="M12 5v14M5 12h14" />,
+  minus: <path d="M5 12h14" />,
+  trash: <path d="M4.5 7h15M9.5 7V4.75h5V7M6.5 7l.9 12.25h9.2L17.5 7M10 10.5v5.5M14 10.5v5.5" />,
+  alert: (
+    <>
+      <path d="M12 3.5 21.5 20h-19L12 3.5Z" />
+      <path d="M12 10v4.5M12 17.25v.01" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m20 20-4.4-4.4" />
+    </>
+  ),
   users: (
     <>
       <circle cx="9" cy="8" r="3.25" />
