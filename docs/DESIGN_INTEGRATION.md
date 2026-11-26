@@ -14,6 +14,7 @@ Kept in `lib/demo` and read by pages through `lib/content.ts`, except images, wh
 ## Images
 
 Source: `src/assets/images` of the AI Studio archive, copied byte-identical to `public/images/urj`.
+Six additional Pexels demonstration photographs are stored locally in the same directory for hotel, pool, reception and apartment variety. Reuse and attribution details are maintained in `ASSET_ATTRIBUTION.md`.
 
 | Source (`urj_…`) | File |
 |---|---|

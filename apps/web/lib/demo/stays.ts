@@ -19,7 +19,7 @@ export const DEMO_HOTELS: DemoHotel[] = [
       'Limestone architecture around a reflecting pool, with terrace lounges and calm, tailored rooms.',
     description:
       'Illustrates how a boutique hotel will be presented: architectural photography, clear room tiers and request-based stays.',
-    images: [IMAGES.hotelExteriorEvening, IMAGES.hotelRoom],
+    images: [IMAGES.hotelExteriorPalm, IMAGES.hotelBedroomSoftLight, IMAGES.hotelPoolCorfu],
     highlights: ['Courtyard terrace & lounge', 'Reflecting-pool garden', 'Dedicated workspace', 'Arrival requests by note'],
     checkInTime: '15:00',
     checkOutTime: '11:00',
@@ -47,7 +47,7 @@ export const DEMO_HOTELS: DemoHotel[] = [
     summary: 'Quiet, sound-insulated rooms and private meeting salons for business and leisure travellers.',
     description:
       'Illustrates an executive-stay listing with clear room sizes, bed configurations and guest limits.',
-    images: [IMAGES.hotelRoom, IMAGES.hotelExteriorEvening],
+    images: [IMAGES.hotelReceptionBell, IMAGES.hotelRoom, IMAGES.hotelPoolCorfu],
     highlights: ['Sound-insulated rooms', 'Private meeting rooms', 'Garment care on request', 'Quiet evening lounge'],
     checkInTime: '14:00',
     checkOutTime: '12:00',
@@ -117,8 +117,7 @@ export const DEMO_APARTMENTS: DemoApartment[] = [
     areaSqm: 185,
     utilitiesIncluded: false,
     summary: 'Family-scale three-bedroom residence with courtyard access and a dedicated utility room.',
-    // No suitable photograph exists in the design set; rendered with an identified placeholder.
-    images: [],
+    images: [IMAGES.apartmentModernKitchen, IMAGES.apartmentLivingRoom],
     amenities: ['Courtyard access', 'Utility & laundry room', 'Covered parking', 'Furnishing options']
   }
 ];

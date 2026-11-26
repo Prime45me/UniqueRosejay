@@ -95,6 +95,42 @@ export const IMAGES = {
     alt: 'Open-plan loft with walnut kitchen cabinetry, a stone island with stools, a linen sofa and tall steel-framed windows',
     width: 1200,
     height: 896
+  },
+  hotelExteriorPalm: {
+    src: `${base}/hotel-exterior-palm.jpg`,
+    alt: 'Contemporary hotel facade with palm trees beneath a clear sky',
+    width: 1600,
+    height: 2400
+  },
+  hotelBedroomSoftLight: {
+    src: `${base}/hotel-bedroom-soft-light.jpg`,
+    alt: 'Stylish hotel bedroom with soft bedside lighting and neatly arranged bedding',
+    width: 1600,
+    height: 2031
+  },
+  hotelReceptionBell: {
+    src: `${base}/hotel-reception-bell.jpg`,
+    alt: 'Close-up of a classic reception bell on a warm, illuminated hotel counter',
+    width: 1600,
+    height: 2400
+  },
+  hotelPoolCorfu: {
+    src: `${base}/hotel-pool-corfu.jpg`,
+    alt: 'Swimming pool beside palm trees overlooking the Ionian Sea on a sunny day',
+    width: 1600,
+    height: 1161
+  },
+  apartmentLivingRoom: {
+    src: `${base}/apartment-living-room.jpg`,
+    alt: 'Bright modern living room with a neutral sofa, television and abstract wall art',
+    width: 1600,
+    height: 830
+  },
+  apartmentModernKitchen: {
+    src: `${base}/apartment-modern-kitchen.jpg`,
+    alt: 'Modern apartment kitchen with wooden cabinets, a dining table and metal chairs',
+    width: 1600,
+    height: 1068
   }
 } satisfies Record<string, SiteImage>;
 
