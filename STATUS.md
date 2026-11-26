@@ -45,6 +45,10 @@
 
 Design integration is implemented; see `docs/INTEGRATION_PROGRESS.md`. The navigation and mobile-menu findings above are resolved for all linked routes. Backend and database were not changed.
 
+## Phase 2 expansion
+
+Phase 2A (architecture assessment) is complete: see `docs/PHASE_2A_ASSESSMENT.md`. Backend foundation fixes are in place (env loading, CORS allowlist, production secret guard, error envelope, migration runner). Blocked: the local database does not accept the `.env` credentials (PostgreSQL runs on port 5001).
+
 ## Approval gate
 
-Phase 2 awaits user review. Do not begin Phase 3 until approved.
+Phase 2B (Store) waits for review of the 2A assessment, the database credentials fix, and answers to the business decisions in the assessment §9.

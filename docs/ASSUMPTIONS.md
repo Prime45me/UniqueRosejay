@@ -36,3 +36,18 @@ This list separates what the client has confirmed from matters still awaiting a 
 - Do not claim hotel or apartment availability without authoritative inventory checks.
 - Do not define staff roles or permissions that the client has not approved.
 - Keep category, address, country and shipping structures extensible while the client resolves policies.
+
+## Phase 2 expansion — decisions required (2026-11-26)
+
+Raised by `docs/PHASE_2A_ASSESSMENT.md` §9. Not answered, so not implemented as policy.
+
+**Deferred by the client (2026-11-26):** hotel reservations, apartment requests and the other open decisions below will be handled later. Do not build or plan work that depends on them until the client reopens them.
+
+- Store: delivery, collection or both; shipping regions and charges; payment provider, methods and timing (at checkout or after approval); tax display; pricing currency or currencies; guest checkout.
+- Hotels: automatic confirmation or staff approval; whether a submitted request holds the room; payment, deposit, cancellation and refund policy; source of real inventory.
+- Apartments: arrangements offered; minimum stay, deposit, payment and cancellation terms per arrangement; approval process.
+- Accounts: email verification requirement and provider; notification channels.
+
+Interim technical defaults (reversible; not business policy):
+- Checkout submits an **order request** (`PENDING_REVIEW`); no payment is taken or simulated.
+- Hotel and apartment submissions are **requests**, never shown as confirmed until the backend records a confirmation.

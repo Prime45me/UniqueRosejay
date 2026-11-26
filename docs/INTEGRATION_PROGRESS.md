@@ -35,3 +35,10 @@ Builds also failed along the way: once from low machine memory, once on a circul
 - No product, hotel or apartment detail pages, search or sorting. The contact form is a disabled preview.
 - Commit 3d58f4a contains a circular `@apply` that does not build; the following commit fixes it.
 - No Phase 3 work (cart, checkout, payments, bookings, authentication, admin, uploads, migrations) was started.
+
+## Phase 2A — 2026-11-26
+
+- Assessment written: `docs/PHASE_2A_ASSESSMENT.md`.
+- Server: root `.env` loading, `CORS_ORIGINS` allowlist, production `JWT_SECRET` guard, JSON error envelope and 404, `validate()` middleware, migration runner (`db:migrate`, `db:status`); removed unused `lib/validation.ts` (it had a floating-point price).
+- Verified: server type check and build pass; health returns 200; unknown route returns a JSON 404; malformed JSON returns 400; a disallowed origin gets no CORS header; `localhost:3000` is allowed.
+- Not verified: migrations, because the database cannot be reached with the current `.env` (`ECONNREFUSED` on 5432; on 5001 the password is rejected).

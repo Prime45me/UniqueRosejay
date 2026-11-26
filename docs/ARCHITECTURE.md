@@ -39,3 +39,12 @@ The Express API uses TypeScript, validation and domain-grouped routes. Database 
 ## Data integrity
 
 Use foreign keys, indexes and safe incremental migrations. Future reservation workflows must prevent date conflicts server-side; order workflows must account for inventory concurrency. Do not claim real-time availability or complete purchases until those checks exist.
+
+## Phase 2 expansion decisions (proposed 2026-11-26)
+
+- **Data flow:** Next.js Server Components → `lib/content.ts` → Express API → PostgreSQL. Client components call the API only for interactive actions (cart, forms).
+- **Backend layering per domain:** `routes` (HTTP and validation) → `services` (business rules and transactions) → `repositories` (parameterised SQL). Shared HTTP conventions live in `src/lib/http.ts`.
+- **Sessions:** database-backed, opaque tokens in HttpOnly cookies, rather than JWTs, so logout and revocation are real.
+- **Booking integrity:** physical room units plus a PostgreSQL exclusion constraint on overlapping date ranges; never frontend-only availability.
+- **Migrations:** plain SQL, forward-only, checksum-verified (`apps/server/src/db/migrate.ts`).
+See `docs/PHASE_2A_ASSESSMENT.md`.

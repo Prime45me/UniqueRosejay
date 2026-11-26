@@ -37,4 +37,4 @@ The project is configured around PostgreSQL and a modular schema that supports t
 
 ## Future work
 
-The schema is intentionally designed for expansion into international catalog and order workflows, real inventory, reservation status workflows and payment processing without forcing a rebuild. No production schema or migrations have been implemented yet.
+The schema is intentionally designed for expansion into international catalog and order workflows, real inventory, reservation status workflows and payment processing without forcing a rebuild. No business tables exist yet. A forward-only migration runner is in place (`npm run db:migrate -w apps/server`, files in `apps/server/migrations`). The proposed schema for the expansion is in `docs/PHASE_2A_ASSESSMENT.md` §7, pending review. Local PostgreSQL 18 listens on port 5001; the current `.env` credentials do not connect.

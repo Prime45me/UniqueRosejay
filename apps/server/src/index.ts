@@ -1,10 +1,10 @@
-import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 
 import { env } from './config/env.js';
+import { errorHandler, notFoundHandler } from './lib/http.js';
 import { healthRouter } from './routes/health.js';
 
 const app = express();
@@ -16,8 +16,18 @@ const apiLimiter = rateLimit({
   legacyHeaders: false
 });
 
+app.disable('x-powered-by');
 app.use(helmet());
-app.use(cors({ origin: true, credentials: true }));
+// Only configured origins may send credentialed requests (cookies). Requests without an Origin
+// header (server-to-server, curl, Next.js server components) are allowed.
+app.use(
+  cors({
+    origin(origin, callback) {
+      callback(null, !origin || env.corsOrigins.includes(origin));
+    },
+    credentials: true
+  })
+);
 app.use(express.json({ limit: '1mb' }));
 app.use('/api', apiLimiter);
 app.use('/api', healthRouter);
@@ -29,6 +39,9 @@ app.get('/', (_req, res) => {
     version: '0.1.0'
   });
 });
+
+app.use('/api', notFoundHandler);
+app.use(errorHandler);
 
 app.listen(env.PORT, () => {
   console.log(`UniqueRosejay server running on http://localhost:${env.PORT}`);

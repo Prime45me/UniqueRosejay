@@ -1,5 +1,7 @@
 # URJ Security Review — npm Dependencies
 
+> **Superseded.** The PostCSS finding was resolved on 2026-11-20. See `docs/SECURITY_AUDIT.md` for the current result (0 vulnerabilities).
+
 **Review date:** 2026-11-20  
 **Scope:** npm dependency audit only; not a full application security assessment.
 
