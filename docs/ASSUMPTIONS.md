@@ -51,3 +51,13 @@ Raised by `docs/PHASE_2A_ASSESSMENT.md` §9. Not answered, so not implemented as
 Interim technical defaults (reversible; not business policy):
 - Checkout submits an **order request** (`PENDING_REVIEW`); no payment is taken or simulated.
 - Hotel and apartment submissions are **requests**, never shown as confirmed until the backend records a confirmation.
+
+## Store interim technical defaults (Phase 2B, 2026-11-26) — reversible, not business policy
+
+- **Currency:** each product carries its own currency; a bag must be single-currency. Demo data uses USD for demonstration only.
+- **Payment:** none. Orders are requests (`PENDING_REVIEW`, payment `NOT_REQUESTED`); charges and taxes are stored as unknown (NULL) and shown as "to be confirmed".
+- **Fulfilment:** delivery and collection are configurable rows. The demo seed enables both as customer preferences; production enables nothing until URJ decides.
+- **Stock:** reserved when an order request is submitted, to prevent overselling. Releasing stock on cancellation belongs to the future admin workflow.
+- **Guest orders:** accounts arrive in Phase 2E. A guest can view only their own order, through an HttpOnly access cookie in the browser that submitted it.
+- **Limits:** 10 units per line (technical safeguard).
+- **Country field:** any ISO country can be entered; this does not imply delivery coverage.

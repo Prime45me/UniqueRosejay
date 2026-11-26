@@ -77,6 +77,7 @@ export default async function StorePage({ searchParams }: { searchParams: Promis
   const showDirectory = !state.category && !filtering && state.page === 1;
   const banner = activeCategory?.image ?? (activeGroup ? activeGroup.categories[0]?.image : null);
 
+  // Option facets (size, shade, finish…) are category-aware: shown once a category or group is chosen.
   const tabs = [
     { label: 'All categories', href: '/store', active: !state.category },
     ...groups.map((group) => ({ label: group.name, href: storeHref({ category: group.slug }), active: state.category === group.slug })),
@@ -117,7 +118,7 @@ export default async function StorePage({ searchParams }: { searchParams: Promis
       </div>
 
       <div className="mt-6">
-        <CatalogueControls state={state} facets={meta.facets.options} currency={meta.facets.currencies.length === 1 ? meta.facets.currencies[0] : undefined} />
+        <CatalogueControls state={state} facets={state.category ? meta.facets.options : []} currency={meta.facets.currencies.length === 1 ? meta.facets.currencies[0] : undefined} />
       </div>
 
       <NoticePanel title="Demonstration catalogue — orders are requests, not payments" className="mt-6">

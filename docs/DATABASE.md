@@ -38,3 +38,11 @@ The project is configured around PostgreSQL and a modular schema that supports t
 ## Future work
 
 The schema is intentionally designed for expansion into international catalog and order workflows, real inventory, reservation status workflows and payment processing without forcing a rebuild. No business tables exist yet. A forward-only migration runner is in place (`npm run db:migrate -w apps/server`, files in `apps/server/migrations`). The proposed schema for the expansion is in `docs/PHASE_2A_ASSESSMENT.md` §7, pending review. Local PostgreSQL 18 listens on port 5001; the current `.env` credentials do not connect.
+
+## Migration 0001_store (applied in test; not yet applied to the local URJ database)
+
+Tables: `product_categories` (tree; groups are parents), `products` (`specifications` and `options` JSONB, `currency`, `base_price`, `is_published`, `is_demo`), `product_variants` (`option_values` JSONB, unique per product, `price_override`, `stock_quantity ≥ 0`), `product_images`, `carts` (token hash only), `cart_items` (unique per cart and variant, quantity 1–99), `fulfilment_methods` (configuration; no charges modelled), `orders` (reference, access-token hash, unique idempotency key, `PENDING_REVIEW` / `NOT_REQUESTED` defaults, nullable charges and tax, structured international address), `order_items` (name, SKU, option and price snapshots; `CHECK line_total = unit_price × quantity`), `order_status_history` (audit).
+
+Money is `NUMERIC(19,4)` with `char(3)` currency. Every table has `updated_at` triggers where relevant. Deletes of ordered products or variants are restricted.
+
+Demo data: `npm run db:seed:demo -w apps/server` (idempotent; every product `is_demo = true`; USD used only as a demonstration currency). Never run by `db:migrate`.

@@ -49,6 +49,10 @@ Design integration is implemented; see `docs/INTEGRATION_PROGRESS.md`. The navig
 
 Phase 2A (architecture assessment) is complete: see `docs/PHASE_2A_ASSESSMENT.md`. Backend foundation fixes are in place (env loading, CORS allowlist, production secret guard, error envelope, migration runner). Blocked: the local database does not accept the `.env` credentials (PostgreSQL runs on port 5001).
 
+## Phase 2B — Store
+
+Implemented and tested against a disposable database: catalogue, product pages, cart, checkout (order requests, no payment) and confirmation. See `docs/INTEGRATION_PROGRESS.md`. Blocked for real use: the local URJ database credentials in `.env`.
+
 ## Approval gate
 
-Phase 2B (Store) waits for review of the 2A assessment, the database credentials fix, and answers to the business decisions in the assessment §9.
+Phase 2B awaits review. Hotels, Apartments and Accounts are not started.

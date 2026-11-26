@@ -48,3 +48,10 @@ Use foreign keys, indexes and safe incremental migrations. Future reservation wo
 - **Booking integrity:** physical room units plus a PostgreSQL exclusion constraint on overlapping date ranges; never frontend-only availability.
 - **Migrations:** plain SQL, forward-only, checksum-verified (`apps/server/src/db/migrate.ts`).
 See `docs/PHASE_2A_ASSESSMENT.md`.
+
+## Store implementation notes (Phase 2B)
+
+- Next.js rewrites `/api/*` to Express (`API_ORIGIN`, default `http://localhost:4000`). Server Components call Express directly through `lib/store/api.ts`, with timeouts and no caching.
+- Express trusts `X-Forwarded-For` only from loopback, so rate limits apply per visitor when Next.js proxies. In production, a front proxy must set this header; otherwise clients could spoof it to Next.js.
+- Client state: `CartProvider` (React context) holds the server's cart response. Every mutation returns the full recomputed cart.
+- Order creation is one transaction: lock the cart and variant rows (in id order), re-validate, snapshot prices, reserve stock, write history and empty the cart. Concurrent buyers of the last unit serialise on the row lock.

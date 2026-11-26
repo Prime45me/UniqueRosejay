@@ -42,3 +42,14 @@ Builds also failed along the way: once from low machine memory, once on a circul
 - Server: root `.env` loading, `CORS_ORIGINS` allowlist, production `JWT_SECRET` guard, JSON error envelope and 404, `validate()` middleware, migration runner (`db:migrate`, `db:status`); removed unused `lib/validation.ts` (it had a floating-point price).
 - Verified: server type check and build pass; health returns 200; unknown route returns a JSON 404; malformed JSON returns 400; a disallowed origin gets no CORS header; `localhost:3000` is allowed.
 - Not verified: migrations, because the database cannot be reached with the current `.env` (`ECONNREFUSED` on 5432; on 5001 the password is rejected).
+
+## Phase 2B — Store (2026-11-26)
+
+Implemented: catalogue API (categories, search, filters, sort, pagination, facets, detail, related), server-side cart, order requests, migration `0001_store`, demo seed, `/store` rebuilt on the API, `/store/[slug]`, cart drawer and header Bag, `/store/checkout`, `/store/orders/[reference]`, loading and error states.
+
+Verification against a disposable PostgreSQL 18 instance (the local URJ database is still unreachable with the `.env` credentials):
+- `npm run test:store -w apps/server`: 26/26 API checks, including concurrency for the last unit, idempotency, price tampering, foreign-item access, stock conflicts and validation.
+- Browser journey (headless Edge, production builds): 37/37 checks, covering discovery, filters, variant selection, cart operations and persistence, validation, submission, confirmation, database persistence and no overflow at 375, 768 and 1024 px. No console errors or warnings.
+- Type checks and production builds pass for both apps.
+
+Not verified: real payment (none exists), email notifications (none exist), the migration on the URJ database.
