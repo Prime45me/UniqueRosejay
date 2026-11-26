@@ -19,7 +19,8 @@ export const DEMO_HOTELS: DemoHotel[] = [
       'Limestone architecture around a reflecting pool, with terrace lounges and calm, tailored rooms.',
     description:
       'Illustrates how a boutique hotel will be presented: architectural photography, clear room tiers and request-based stays.',
-    images: [IMAGES.hotelExteriorPalm, IMAGES.hotelBedroomSoftLight, IMAGES.hotelPoolCorfu],
+    // First image is the listing lead: it must be landscape and match the summary copy.
+    images: [IMAGES.hotelExteriorEvening, IMAGES.hotelBedroomSoftLight, IMAGES.hotelPoolCorfu, IMAGES.hotelExteriorPalm],
     highlights: ['Courtyard terrace & lounge', 'Reflecting-pool garden', 'Dedicated workspace', 'Arrival requests by note'],
     checkInTime: '15:00',
     checkOutTime: '11:00',
@@ -47,7 +48,7 @@ export const DEMO_HOTELS: DemoHotel[] = [
     summary: 'Quiet, sound-insulated rooms and private meeting salons for business and leisure travellers.',
     description:
       'Illustrates an executive-stay listing with clear room sizes, bed configurations and guest limits.',
-    images: [IMAGES.hotelReceptionBell, IMAGES.hotelRoom, IMAGES.hotelPoolCorfu],
+    images: [IMAGES.hotelRoom, IMAGES.hotelReceptionBell, IMAGES.hotelPoolCorfu],
     highlights: ['Sound-insulated rooms', 'Private meeting rooms', 'Garment care on request', 'Quiet evening lounge'],
     checkInTime: '14:00',
     checkOutTime: '12:00',
