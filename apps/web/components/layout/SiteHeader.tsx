@@ -1,8 +1,8 @@
-import Link from 'next/link';
 import { MobileMenu } from '@/components/layout/MobileMenu';
 import { PrimaryNav } from '@/components/layout/PrimaryNav';
+import { Wordmark } from '@/components/layout/Wordmark';
 import { BagButton } from '@/components/store/cart/BagButton';
-import { DEMO_NOTICE, PRIMARY_NAV, SITE } from '@/lib/site';
+import { DEMO_NOTICE, PRIMARY_NAV } from '@/lib/site';
 
 /**
  * Strict three-zone header from the design: wordmark — single-line navigation — one primary action
@@ -18,17 +18,15 @@ export function SiteHeader() {
         Skip to content
       </a>
 
-      <p className="bg-ink px-4 py-2 text-center text-caption text-canvas/85 sm:text-xs">{DEMO_NOTICE}</p>
+      {/* Primary demonstration disclosure: present on every page, deliberately quiet. */}
+      <p className="border-b border-hairline bg-surface px-4 py-1.5 text-center text-caption tracking-wide text-ink-muted">
+        <span className="mr-1.5 font-semibold uppercase tracking-[0.18em] text-accent">Preview</span>
+        {DEMO_NOTICE}
+      </p>
 
       <header className="sticky top-0 z-40 border-b border-hairline bg-canvas/95 backdrop-blur-sm">
-        <div className="relative mx-auto flex h-16 max-w-site items-center justify-between gap-8 px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/"
-            className="shrink-0 whitespace-nowrap font-display text-2xl font-semibold tracking-tight text-ink transition-colors hover:text-accent"
-          >
-            {SITE.shortName}
-            <span className="sr-only"> — home</span>
-          </Link>
+        <div className="relative mx-auto flex h-[4.25rem] max-w-site items-center justify-between gap-8 px-4 sm:px-6 lg:px-8">
+          <Wordmark />
 
           <PrimaryNav items={PRIMARY_NAV} />
 

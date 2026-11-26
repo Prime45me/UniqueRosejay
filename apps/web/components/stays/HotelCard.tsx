@@ -1,7 +1,6 @@
 import { ArrowLink } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
 import { Media } from '@/components/ui/Media';
-import { DemoLabel } from '@/components/ui/Notice';
 import type { DemoHotel } from '@/lib/types';
 
 /** Room-tier table: size, beds and guest limit. Rates are deliberately omitted (not confirmed). */
@@ -47,7 +46,6 @@ export function HotelCard({ hotel, priority = false }: { hotel: DemoHotel; prior
       <div className="flex flex-col justify-between p-6 sm:p-8 lg:col-span-6">
         <div>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-muted">
-            <DemoLabel />
             <span className="inline-flex items-center gap-1">
               <Icon name="map-pin" className="h-3.5 w-3.5" />
               {hotel.locationLabel}

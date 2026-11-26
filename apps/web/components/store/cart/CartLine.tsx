@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { CartRequestError, useCart } from '@/components/store/cart/CartProvider';
 import { Icon } from '@/components/ui/Icon';
+import { Select } from '@/components/ui/Select';
 import { formatMoney, optionLabel, STOCK_LABEL } from '@/lib/store/format';
 import type { CartIssue, CartItem } from '@/lib/store/types';
 
@@ -76,11 +77,12 @@ export function CartLine({ item, compact = false, readOnly = false }: { item: Ca
         {hasChoices && !readOnly ? (
           <label className="mt-2 block">
             <span className="sr-only">Option for {item.product.name}</span>
-            <select
+            <Select
+              size="sm"
               value={item.variant.id}
               disabled={busy}
               onChange={(event) => run(() => updateItem(item.id, { variantId: event.target.value }))}
-              className="w-full max-w-[16rem] rounded-sm border border-hairline bg-canvas px-2.5 py-1.5 text-xs text-ink"
+              className="w-full max-w-[16rem]"
             >
               {item.variantChoices.map((choice) => (
                 <option key={choice.id} value={choice.id} disabled={choice.stockStatus === 'out_of_stock' && choice.id !== item.variant.id}>
@@ -88,7 +90,7 @@ export function CartLine({ item, compact = false, readOnly = false }: { item: Ca
                   {choice.stockStatus === 'out_of_stock' ? ` — ${STOCK_LABEL.out_of_stock}` : ''}
                 </option>
               ))}
-            </select>
+            </Select>
           </label>
         ) : null}
 
@@ -136,7 +138,7 @@ export function CartLine({ item, compact = false, readOnly = false }: { item: Ca
           ) : null}
         </div>
 
-        {!compact && item.product.isDemo ? <p className="mt-2 text-caption text-status-pending">Demonstration item</p> : null}
+        {!compact && item.product.isDemo ? <p className="mt-2 text-caption text-ink-subtle">Demo item</p> : null}
         {item.issues.map((issue) => (
           <p key={issue} className="mt-2 flex items-start gap-1.5 text-xs text-status-negative">
             <Icon name="alert" className="mt-0.5 h-3.5 w-3.5 shrink-0" />

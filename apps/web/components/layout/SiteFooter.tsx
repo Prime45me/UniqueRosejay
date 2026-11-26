@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Wordmark } from '@/components/layout/Wordmark';
 import { Container } from '@/components/ui/Container';
 import { getStoreCategories } from '@/lib/content';
 import { CONTACT_PLACEHOLDERS, SITE } from '@/lib/site';
@@ -31,7 +32,7 @@ export async function SiteFooter() {
       <Container className="py-14">
         <div className="grid grid-cols-1 gap-10 border-b border-hairline pb-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-display text-2xl font-semibold tracking-tight">{SITE.name}</p>
+            <Wordmark size="footer" asLink={false} />
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-muted">
               One website for the URJ Store, Hotels and Apartments, under centralised administration.
             </p>

@@ -1,3 +1,5 @@
+import { DISPLAY_LOCALE } from '@/lib/site';
+
 /**
  * ISO 3166-1 alpha-2 codes. Names are rendered with Intl.DisplayNames, so no country list is
  * hard-coded in English. This is an address field only: it does not imply that URJ delivers to
@@ -8,7 +10,7 @@ export const COUNTRY_CODES =
     ' '
   );
 
-export function countryOptions(locale = 'en-GB') {
+export function countryOptions(locale = DISPLAY_LOCALE) {
   const names = new Intl.DisplayNames([locale], { type: 'region' });
   return COUNTRY_CODES.map((code) => ({ code, name: names.of(code) ?? code })).sort((a, b) => a.name.localeCompare(b.name, locale));
 }

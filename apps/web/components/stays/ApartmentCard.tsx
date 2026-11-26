@@ -1,6 +1,6 @@
 import { Icon } from '@/components/ui/Icon';
 import { Media } from '@/components/ui/Media';
-import { DemoLabel, Ledger } from '@/components/ui/Notice';
+import { Ledger } from '@/components/ui/Notice';
 import { TO_BE_CONFIRMED } from '@/lib/site';
 import type { DemoApartment } from '@/lib/types';
 
@@ -72,9 +72,6 @@ export function ApartmentCard({ apartment, arrangementLabel }: { apartment: Demo
           />
         </div>
 
-        <div className="mt-5 border-t border-hairline pt-4">
-          <DemoLabel />
-        </div>
       </div>
     </article>
   );

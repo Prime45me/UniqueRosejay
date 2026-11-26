@@ -8,7 +8,7 @@ import { Icon } from '@/components/ui/Icon';
 import { NoticePanel } from '@/components/ui/Notice';
 import { Kicker } from '@/components/ui/Typography';
 import { storeGet, StoreApiError } from '@/lib/store/api';
-import { formatMoney, optionLabel } from '@/lib/store/format';
+import { countryName, formatDateTime, formatMoney, optionLabel } from '@/lib/store/format';
 import type { OrderDetail } from '@/lib/store/types';
 
 export const metadata: Metadata = { title: 'Order request received — Store', robots: { index: false } };
@@ -41,7 +41,7 @@ export default async function OrderPage({ params }: { params: Promise<{ referenc
   }
 
   const status = STATUS_TEXT[order.status];
-  const submitted = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(order.createdAt));
+  const submitted = formatDateTime(order.createdAt);
 
   return (
     <Container className="py-12 lg:py-16">
@@ -131,7 +131,7 @@ export default async function OrderPage({ params }: { params: Promise<{ referenc
                   order.fulfilment.address.locality,
                   order.fulfilment.address.administrativeArea,
                   order.fulfilment.address.postalCode,
-                  new Intl.DisplayNames(['en-GB'], { type: 'region' }).of(order.fulfilment.address.countryCode)
+                  countryName(order.fulfilment.address.countryCode)
                 ]
                   .filter(Boolean)
                   .map((line) => (

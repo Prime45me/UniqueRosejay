@@ -51,6 +51,11 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Avoids single-word last lines in titles and card names without forcing balance. */
+  .text-pretty {
+    text-wrap: pretty;
+  }
 }
 
 @keyframes fadeIn {
@@ -68,6 +73,42 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }
 

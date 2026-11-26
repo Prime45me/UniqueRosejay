@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
 import { Icon, type IconName } from '@/components/ui/Icon';
+import { Select } from '@/components/ui/Select';
 import { NoticePanel } from '@/components/ui/Notice';
 import { Kicker } from '@/components/ui/Typography';
 import { CONTACT_PLACEHOLDERS, SITE } from '@/lib/site';
@@ -82,11 +83,11 @@ export default function ContactPage() {
                 <label htmlFor="contact-area" className={labelClass}>
                   Business area
                 </label>
-                <select id="contact-area" name="area" className={fieldClass} defaultValue={AREAS[0]}>
+                <Select id="contact-area" name="area" defaultValue={AREAS[0]}>
                   {AREAS.map((area) => (
                     <option key={area}>{area}</option>
                   ))}
-                </select>
+                </Select>
               </div>
               <div>
                 <label htmlFor="contact-message" className={labelClass}>

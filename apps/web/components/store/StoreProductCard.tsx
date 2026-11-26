@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Swatches } from '@/components/store/ProductCard';
 import { StockLabel } from '@/components/store/StockLabel';
 import { Icon } from '@/components/ui/Icon';
-import { formatPriceRange } from '@/lib/store/format';
+import { displayTitle, formatPriceRange } from '@/lib/store/format';
 import type { ProductSummary } from '@/lib/store/types';
 
 /**
@@ -14,7 +14,7 @@ export function StoreProductCard({ product, priority = false }: { product: Produ
   const appliance = product.category.presentationMode === 'appliance';
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-sm border border-hairline bg-surface-elevated transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md focus-within:shadow-md">
+    <article className="group relative flex flex-col overflow-hidden rounded-sm border border-hairline bg-surface-elevated transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1 hover:border-ink-subtle/40 hover:shadow-[0_18px_40px_-24px_rgba(20,20,19,0.35)] focus-within:shadow-[0_18px_40px_-24px_rgba(20,20,19,0.35)]">
       <div className={`relative overflow-hidden border-b border-hairline bg-surface ${appliance ? 'aspect-landscape' : 'aspect-portrait'}`}>
         {product.image ? (
           <Image
@@ -23,7 +23,7 @@ export function StoreProductCard({ product, priority = false }: { product: Produ
             fill
             priority={priority}
             sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
             style={product.image.focalPoint ? { objectPosition: product.image.focalPoint } : undefined}
           />
         ) : (
@@ -39,11 +39,15 @@ export function StoreProductCard({ product, priority = false }: { product: Produ
 
       <div className="flex flex-1 flex-col justify-between p-5">
         <div>
-          <p className="text-caption font-semibold uppercase tracking-wider text-accent">{product.category.name}</p>
-          <h3 className="mt-1.5 text-base font-semibold leading-snug text-ink">
+          <p className="flex items-center gap-2 text-caption font-semibold uppercase tracking-wider text-accent">
+            {product.category.name}
+            {/* Quiet per-item marker; the full disclosure sits at the top of the page. */}
+            {product.isDemo ? <span className="font-medium tracking-[0.14em] text-ink-subtle">· Demo</span> : null}
+          </p>
+          <h3 className="text-pretty mt-1.5 text-base font-semibold leading-snug text-ink">
             {/* Stretched link: the whole card is one target with a single accessible name. */}
             <Link href={`/store/${product.slug}`} className="after:absolute after:inset-0 focus-visible:outline-none">
-              {product.name}
+              {displayTitle(product.name)}
             </Link>
           </h3>
           {product.editorialNote && !appliance ? <p className="mt-1 text-xs italic text-ink-muted">{product.editorialNote}</p> : null}
@@ -65,10 +69,7 @@ export function StoreProductCard({ product, priority = false }: { product: Produ
         </div>
 
         <div className="mt-4 flex items-end justify-between gap-3 border-t border-hairline pt-3">
-          <div>
-            <p className="font-mono text-sm font-medium tabular-nums text-ink">{formatPriceRange(product.priceFrom, product.priceTo)}</p>
-            {product.isDemo ? <p className="text-caption text-status-pending">Demonstration price</p> : null}
-          </div>
+          <p className="font-mono text-sm font-medium tabular-nums text-ink">{formatPriceRange(product.priceFrom, product.priceTo)}</p>
           <StockLabel status={product.stockStatus} />
         </div>
       </div>

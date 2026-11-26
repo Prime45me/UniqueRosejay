@@ -6,7 +6,8 @@ import { ArrowLink, ButtonLink } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Media } from '@/components/ui/Media';
-import { DemoLabel } from '@/components/ui/Notice';
+import { Reveal } from '@/components/ui/Reveal';
+import { displayTitle } from '@/lib/store/format';
 import { Kicker, SectionHeader } from '@/components/ui/Typography';
 import { getDemoApartments, getDemoHotels, getDemoProducts } from '@/lib/content';
 import { IMAGES } from '@/lib/demo/images';
@@ -53,8 +54,10 @@ function FeatureCard({ product, image, href }: { product: DemoProduct; image: (t
       />
       <div className="flex flex-col justify-between p-6 sm:col-span-7">
         <div>
-          <DemoLabel>Demonstration item</DemoLabel>
-          <h3 className="mt-2 font-display text-2xl font-semibold text-ink">{product.name}</h3>
+          <p className="text-caption font-semibold uppercase tracking-wider text-accent">
+            {product.categorySlug === 'wigs' ? 'Wigs' : 'Bags & Shoes'} <span className="font-medium tracking-[0.14em] text-ink-subtle">· Demo</span>
+          </p>
+          <h3 className="text-pretty mt-2 font-display text-2xl font-semibold text-ink">{displayTitle(product.name)}</h3>
           <p className="mt-2 text-xs leading-relaxed text-ink-muted">{product.shortDescription}</p>
           {product.swatches ? (
             <div className="mt-4">
@@ -118,9 +121,6 @@ export default async function HomePage() {
               sizes="(min-width: 1280px) 760px, (min-width: 1024px) 58vw, 100vw"
               priority
             >
-              <span className="absolute bottom-3 right-3 rounded-sm bg-canvas/90 px-2 py-1">
-                <DemoLabel>Demonstration image</DemoLabel>
-              </span>
             </Media>
           </div>
         </div>
@@ -160,7 +160,7 @@ export default async function HomePage() {
           action={<ArrowLink href="/store?category=dresses-clothing">Shop Fashion &amp; Beauty</ArrowLink>}
         />
 
-        <div className="mt-8 grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
+        <Reveal as="div" className="mt-8 grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12 lg:gap-8">
           {dress ? (
             <Link
               href="/store?category=dresses-clothing"
@@ -192,7 +192,7 @@ export default async function HomePage() {
             {wig ? <FeatureCard product={wig} image={IMAGES.storeWig} href="/store?category=wigs" /> : null}
             {bag ? <FeatureCard product={bag} image={IMAGES.storeBagAndMules} href="/store?category=bags-shoes" /> : null}
           </div>
-        </div>
+        </Reveal>
       </Container>
 
       {/* 4 · Chapter 02 — Home & Cooling Appliances */}
@@ -217,7 +217,7 @@ export default async function HomePage() {
             />
           </div>
 
-          <ul className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <Reveal as="ul" className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
             {appliances.map((item) => (
               <li key={item.slug}>
                 <Link
@@ -233,7 +233,7 @@ export default async function HomePage() {
                   <div className="flex flex-1 flex-col justify-between p-5">
                     <div>
                       <div className="flex items-center justify-between font-mono text-caption text-ink-subtle">
-                        <DemoLabel>Demonstration item</DemoLabel>
+                        <span className="uppercase tracking-wider">Demo</span>
                         <span>{item.reference}</span>
                       </div>
                       <h3 className="mt-2 text-base font-semibold text-ink">{item.name}</h3>
@@ -250,7 +250,7 @@ export default async function HomePage() {
                 </Link>
               </li>
             ))}
-          </ul>
+          </Reveal>
         </Container>
       </section>
 
@@ -261,12 +261,12 @@ export default async function HomePage() {
           <h2 className="mt-2 text-3xl font-semibold text-ink sm:text-4xl">Evening Hotels &amp; Sunlit Residences</h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <Reveal as="div" className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {hotel ? (
             <article className="flex flex-col overflow-hidden rounded-sm border border-hairline bg-surface-elevated">
               <Media image={hotel.images[0]} frameClassName="aspect-wide" sizes="(min-width: 1024px) 600px, 100vw">
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/65 to-transparent p-5 pt-20 text-canvas">
-                  <Kicker tone="light">Hotels · Demonstration listing</Kicker>
+                  <Kicker tone="light">Hotels · Sample listing</Kicker>
                   <h3 className="mt-1 font-display text-2xl font-semibold sm:text-3xl">{hotel.name}</h3>
                 </div>
               </Media>
@@ -291,7 +291,7 @@ export default async function HomePage() {
             <article className="flex flex-col overflow-hidden rounded-sm border border-hairline bg-surface-elevated">
               <Media image={apartment.images[0]} frameClassName="aspect-wide" sizes="(min-width: 1024px) 600px, 100vw">
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/65 to-transparent p-5 pt-20 text-canvas">
-                  <Kicker tone="light">Apartments · Demonstration listing</Kicker>
+                  <Kicker tone="light">Apartments · Sample listing</Kicker>
                   <h3 className="mt-1 font-display text-2xl font-semibold sm:text-3xl">{apartment.name}</h3>
                 </div>
               </Media>
@@ -319,7 +319,7 @@ export default async function HomePage() {
               </div>
             </article>
           ) : null}
-        </div>
+        </Reveal>
       </Container>
     </>
   );

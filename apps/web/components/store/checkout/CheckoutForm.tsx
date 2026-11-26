@@ -7,6 +7,7 @@ import { CartLine } from '@/components/store/cart/CartLine';
 import { useCart } from '@/components/store/cart/CartProvider';
 import { buttonClasses } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
+import { Select } from '@/components/ui/Select';
 import { formatMoney } from '@/lib/store/format';
 import type { ApiErrorBody, FulfilmentMethod } from '@/lib/store/types';
 
@@ -239,14 +240,14 @@ export function CheckoutForm({ methods, countries }: { methods: FulfilmentMethod
             <div className="mt-6 grid grid-cols-1 gap-4 border-t border-hairline pt-6 sm:grid-cols-2 animate-[riseIn_220ms_ease-out]">
               <div className="sm:col-span-2">
                 <Field id="co-countryCode" label="Country" error={errors.countryCode} hint="Delivery coverage is confirmed by URJ during review.">
-                  <select id="co-countryCode" autoComplete="country" value={values.countryCode} onChange={set('countryCode')} className={`${field} border-hairline`} {...invalid('countryCode')}>
+                  <Select id="co-countryCode" autoComplete="country" value={values.countryCode} onChange={set('countryCode')} tone="surface" {...invalid('countryCode')}>
                     <option value="">Select a country</option>
                     {countries.map((country) => (
                       <option key={country.code} value={country.code}>
                         {country.name}
                       </option>
                     ))}
-                  </select>
+                  </Select>
                 </Field>
               </div>
               <div className="sm:col-span-2">

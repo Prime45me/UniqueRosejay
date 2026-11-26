@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/Container';
 import { FilterTabs } from '@/components/ui/FilterTabs';
 import { Icon } from '@/components/ui/Icon';
 import { Media } from '@/components/ui/Media';
-import { DemoLabel, NoticePanel } from '@/components/ui/Notice';
+import { NoticePanel } from '@/components/ui/Notice';
 import { Kicker } from '@/components/ui/Typography';
 import { getApartmentArrangements, getDemoApartments, isApartmentArrangement } from '@/lib/content';
 import { IMAGES } from '@/lib/demo/images';
@@ -47,9 +47,6 @@ export default async function ApartmentsPage({ searchParams }: ApartmentsPagePro
             Compare layouts, floor area, furnishing and utilities at a glance. Rental terms are set out in a simple
             ledger.
           </p>
-          <div className="mt-5">
-            <DemoLabel>Demonstration image and listings</DemoLabel>
-          </div>
         </div>
         <Media
           image={IMAGES.apartmentLivingSkyline}

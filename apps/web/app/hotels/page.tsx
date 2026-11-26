@@ -3,7 +3,7 @@ import { HotelCard } from '@/components/stays/HotelCard';
 import { Container } from '@/components/ui/Container';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Media } from '@/components/ui/Media';
-import { DemoLabel, NoticePanel } from '@/components/ui/Notice';
+import { NoticePanel } from '@/components/ui/Notice';
 import { Kicker, SectionHeader } from '@/components/ui/Typography';
 import { getDemoHotels } from '@/lib/content';
 import { IMAGES } from '@/lib/demo/images';
@@ -39,9 +39,6 @@ export default async function HotelsPage() {
             <p className="mt-3 max-w-xl text-sm text-white/85">
               Browse hotel listings, compare room tiers and, in a later phase, send date-specific stay requests.
             </p>
-            <div className="mt-4">
-              <DemoLabel tone="light">Demonstration image and listings</DemoLabel>
-            </div>
           </div>
         </Media>
       </div>

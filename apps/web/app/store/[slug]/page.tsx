@@ -6,9 +6,11 @@ import { PurchasePanel } from '@/components/store/product/PurchasePanel';
 import { StoreProductCard } from '@/components/store/StoreProductCard';
 import { Container } from '@/components/ui/Container';
 import { Icon } from '@/components/ui/Icon';
-import { Ledger, NoticePanel } from '@/components/ui/Notice';
+import { Ledger } from '@/components/ui/Notice';
+import { Reveal } from '@/components/ui/Reveal';
 import { Kicker, SectionHeader } from '@/components/ui/Typography';
 import { storeGet, StoreApiError } from '@/lib/store/api';
+import { displayTitle } from '@/lib/store/format';
 import type { ProductDetail } from '@/lib/store/types';
 
 type Params = { params: Promise<{ slug: string }> };
@@ -64,7 +66,7 @@ export default async function ProductPage({ params }: Params) {
           </li>
           <li aria-hidden>/</li>
           <li aria-current="page" className="text-ink">
-            {product.name}
+            {displayTitle(product.name)}
           </li>
         </ol>
       </nav>
@@ -77,7 +79,7 @@ export default async function ProductPage({ params }: Params) {
         <div className="rounded-sm border border-hairline bg-surface-elevated p-6 sm:p-8 lg:sticky lg:top-24 lg:col-span-5">
           <Kicker>{product.category.name}</Kicker>
           {product.editorialNote ? <p className="mt-2 text-xs font-medium italic text-ink-muted">{product.editorialNote}</p> : null}
-          <h1 className="mt-2 text-3xl font-semibold leading-tight text-ink sm:text-4xl">{product.name}</h1>
+          <h1 className="text-pretty mt-2 text-[2rem] font-semibold leading-[1.1] text-ink sm:text-[2.35rem]">{displayTitle(product.name)}</h1>
           {product.highlightSpec ? (
             <p className="mt-3 inline-block rounded-sm border border-hairline bg-canvas px-2.5 py-1.5 font-mono text-caption text-ink">{product.highlightSpec}</p>
           ) : null}
@@ -105,25 +107,17 @@ export default async function ProductPage({ params }: Params) {
             <Ledger className="mt-3 text-sm" rows={product.specifications.map((spec) => ({ label: spec.label, value: spec.value }))} />
           </section>
         ) : null}
-        {product.isDemo ? (
-          <div className="lg:col-span-5">
-            <NoticePanel title="Demonstration product">
-              This listing, its photographs and its price illustrate how products will be presented. It is not verified URJ
-              inventory. Orders are submitted as requests for review; no payment is taken.
-            </NoticePanel>
-          </div>
-        ) : null}
       </div>
 
       {product.related.length ? (
-        <section aria-labelledby="related-heading" className="mt-16">
+        <Reveal as="section" className="mt-16" aria-labelledby="related-heading">
           <SectionHeader kicker="You may also like" title={<span id="related-heading">Related pieces</span>} />
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {product.related.map((related) => (
               <StoreProductCard key={related.id} product={related} />
             ))}
           </div>
-        </section>
+        </Reveal>
       ) : null}
     </Container>
   );

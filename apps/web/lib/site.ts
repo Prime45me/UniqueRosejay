@@ -15,6 +15,14 @@ export const SITE = {
     'Unique RoseJay Enterprises (URJ) brings its Store, Hotels and Apartments together on one website, under one centrally administered business.'
 } as const;
 
+/**
+ * Display locale for money, dates and country names. The business has not confirmed launch markets
+ * or a presentation locale, so this is neutral English ("en") rather than a country variant: it
+ * formats each price in its own ISO currency without regional prefixes (e.g. "$245.00" for USD,
+ * "£245.00" for GBP, "CA$245.00" for CAD). Override with NEXT_PUBLIC_DISPLAY_LOCALE once decided.
+ */
+export const DISPLAY_LOCALE = process.env.NEXT_PUBLIC_DISPLAY_LOCALE || 'en';
+
 /** Placeholder text used wherever official company information has not been supplied. */
 export const TO_BE_CONFIRMED = 'To be confirmed';
 
@@ -40,4 +48,4 @@ export const PRIMARY_NAV: NavItem[] = [
 
 
 export const DEMO_NOTICE =
-  'Design preview: products, properties and photographs are demonstration content, not actual URJ inventory.';
+  'Products, properties, prices and photographs on this site are demonstration content, not verified URJ inventory.';
